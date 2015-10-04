@@ -15,6 +15,17 @@ body {
     padding-bottom: 20px;
 }
 
+#portfolio {
+  min-width: 100%;
+  height: 500px;
+  #sheets {
+    height: 100%;
+    width: 100%
+  }
+}
+
+
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
