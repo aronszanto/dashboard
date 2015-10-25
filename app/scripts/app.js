@@ -1,44 +1,33 @@
+// require('handlebars');
 
-var React = window.React = require('react'),
-    Timer = require("./ui/Timer"),
-    mountNode = document.getElementById("app");
-
-var TodoList = React.createClass({
-  render: function() {
-    var createItem = function(itemText) {
-      return <li>{itemText}</li>;
-    };
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
-var TodoApp = React.createClass({
-  getInitialState: function() {
-    return {items: [], text: ''};
-  },
-  onChange: function(e) {
-    this.setState({text: e.target.value});
-  },
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var nextItems = this.state.items.concat([this.state.text]);
-    var nextText = '';
-    this.setState({items: nextItems, text: nextText});
-  },
-  render: function() {
-    return (
-      <div>
-        <h3>TODO</h3>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-        <Timer />
-      </div>
-    );
-  }
+// Navigation
+$('#portfolio-nav').click(function() {
+  $('#alumni').hide();
+  $('#portfolio').show();
+  $('#portfolio-nav').addClass('active');
+  $('#alumni-nav').removeClass('active');
 });
 
+$('#alumni-nav').click(function() {
+  $('#alumni').show();
+  $('#portfolio').hide();
+  $('#portfolio-nav').removeClass('active');
+  $('#alumni-nav').addClass('active');
+});
 
-React.render(<TodoApp />, mountNode);
+// Templating
+var alumniTemplateScript = $('#alumni-template').html();
+var alumniTemplate = Handlebars.compile(alumniTemplateScript);
 
+// Pulling from DB
+var alumniRef = new Firebase("https://bdci.firebaseio.com/alumni");
+alumniRef.on("value", function(snapshot) {
+  var alumni = snapshot.val()
+  for (var i = 1; i < alumni.length; i++) {
+    console.log('Context: ', alumni[i]);
+    var alumHtml = alumniTemplate(snapshot.val()[i]);
+    $('#alumni').append(alumHtml);
+  };
+}, function(errorObject) {
+  console.log('Read failure: ', errorObject.code)
+});

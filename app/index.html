@@ -12,36 +12,50 @@
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
+        <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script>
     </head>
     <body>
+        <script id="alumni-template" type="x-handlebars-template">
+          <div class="alum">
+            <div class="row">
+              <div class="col-md-8">
+                <h4>{{first_name}} {{last_name}}, {{graduation_year}}, {{concentration}}</h4>
+                <p>{{message}}</p>
+              </div>
+              <div class="col-md-4">
+                <p>{{current_job}}</p>
+                <p>
+                  <a class="contact_btn" href="{{mobile_number}}"><i class="fa fa-mobile"></i></a>
+                  <a class="contact_btn" href="mailto:{{email_address}}"><i class="fa fa-envelope-o"></i></a>
+                  <a class="contact_btn" href="{{facebook_url}}"><i class="fa fa-facebook-official"></i></a>
+                  <a class="contact_btn" href="{{linkedin_url}}"><i class="fa fa-linkedin-square"></i></a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </script>
         <div class="container">
             <div class="header">
                 <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Alumni</a></li>
+                    <li id="portfolio-nav"class="active"><a href="#">Portfolio</a></li>
+                    <li id="alumni-nav"><a href="#">Alumni</a></li>
                 </ul>
                 <h3 class="text-muted">BDCI Member Dashboard</h3>
             </div>
 
-            <div id="app"></div>
-
             <div id="portfolio">
-              <!-- <iframe id="sheets" src="https://docs.google.com/spreadsheets/d/1f79WAjy-Z99hRn-RXDnW7mR4hubaTXizss2uTVbx-UM/edit?usp=sharing"> -->
-              <iframe id="sheets" src="https://docs.google.com/spreadsheets/d/1f79WAjy-Z99hRn-RXDnW7mR4hubaTXizss2uTVbx-UM/edit?ts=56085c19#gid=0">
+              <h1>Stocks Go Here</h1>
+              <!-- <iframe id="sheets" src="https://docs.google.com/spreadsheets/d/1f79WAjy-Z99hRn-RXDnW7mR4hubaTXizss2uTVbx-UM/edit?ts=56085c19#gid=0"> -->
             </div>
 
-            <div id="content" class="row marketing">
-                <div class="col-lg-6">
-                </div>
+            <div id="alumni">
             </div>
 
             <div class="footer">
                 <p>Designed and maintained with <i class="fa fa-black-tie"></i> by Joseph Kahn, Sammy Mehra, and Aron Szanto.</p>
             </div>
-
         </div>
-
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
