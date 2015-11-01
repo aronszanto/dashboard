@@ -1,4 +1,4 @@
-// require('handlebars');
+var $ = require('jquery');
 
 // Navigation
 $('#portfolio-nav').click(function() {

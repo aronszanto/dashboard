@@ -17,16 +17,16 @@
     </head>
     <body>
         <script id="alumni-template" type="x-handlebars-template">
-          <div class="alum">
+          <div class="alum-card">
             <div class="row">
               <div class="col-md-8">
-                <h4>{{first_name}} {{last_name}}, {{graduation_year}}, {{concentration}}</h4>
+                <h4>{{first_name}} {{last_name}}</h4>
                 <p>{{message}}</p>
               </div>
               <div class="col-md-4">
-                <p>{{current_job}}</p>
-                <p>
-                  <a class="contact_btn" href="tel:{{mobile_number}}"><i class="fa fa-mobile"></i></a>
+                <p class="current_job">{{current_job}}</p>
+                <p>{{concentration}} {{graduation_year}}</p>
+                <p class="contact-details">
                   <a class="contact_btn" href="mailto:{{email_address}}"><i class="fa fa-envelope-o"></i></a>
                   <a class="contact_btn" href="{{facebook_url}}"><i class="fa fa-facebook-official"></i></a>
                   <a class="contact_btn" href="{{linkedin_url}}"><i class="fa fa-linkedin-square"></i></a>

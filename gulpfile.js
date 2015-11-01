@@ -3,8 +3,6 @@
 var gulp = require('gulp');
 var del = require('del');
 
-
-
 // Load plugins
 var $ = require('gulp-load-plugins')();
 var browserify = require('browserify');
@@ -40,8 +38,6 @@ gulp.task('sass', function() {
         .pipe($.size());
 });
 
-
-
 var bundler = watchify(browserify({
     entries: [sourceFile],
     debug: true,
@@ -74,9 +70,6 @@ gulp.task('buildScripts', function() {
         .pipe(source(destFileName))
         .pipe(gulp.dest('dist/scripts'));
 });
-
-
-
 
 // HTML
 gulp.task('html', function() {
@@ -137,7 +130,6 @@ gulp.task('moveLibraries',['clean'], function(){
   .pipe(gulp.dest('dist/scripts'));
 });
 
-
 // Bower helper
 gulp.task('bower', function() {
     gulp.src('app/bower_components/**/*.js', {
@@ -181,8 +173,6 @@ gulp.task('watch', ['html', 'fonts', 'bundle'], function() {
     gulp.watch('app/*.html', ['html']);
 
     gulp.watch(['app/styles/**/*.scss', 'app/styles/**/*.css'], ['styles', 'scripts', reload]);
-
-    
 
     // Watch image files
     gulp.watch('app/images/**/*', reload);
