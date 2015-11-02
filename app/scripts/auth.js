@@ -9,7 +9,7 @@ function Login(email, password) {
       console.log("Login Failed!", error);
     } else {
       console.log("Authenticated successfully with payload:", authData);
-      localStorage.setItem("bdci-auth-token", authData);
+      //localStorage.setItem("bdci-auth-token", authData);
     }
   });
 }
